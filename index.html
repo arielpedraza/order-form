@@ -13,11 +13,11 @@
   <section id="productsSection">
     <p>Select your product from the dropdown menu.</p>
     <img src="http://placehold.it/200x200" alt="">
-    <div id="form">
+    <div class="form">
       <form id="store-form">
         <fieldset>
           <legend>Select your Product</legend>
-            <select>
+          <select>
             <option id="start">Select a Product</option>
             <option id="luggage">Luggage</option>
             <option id="bananaSlicer">Banana Slicer</option>
@@ -39,36 +39,42 @@
             <option id="tentacle">Tentacle USB</option>
             <option id="wateringCan">Watering Can</option>
             <option id="wineGlass">Wine Glass</option>
-            </select>
-            <label for="quantity">Quantity:</label>
-            <input name="quantity" type="number" />
+          </select>
+          <label for="quantity">Quantity:</label>
+          <input name="quantity" type="number" />
+          <button id="addCart" type="submit">Add to Cart</button>
+        </form>
+      </div>
+      <div class="form">
+        <form id="user-form">
+          <fieldset>
+            <legend>Shipping Information</legend>
+              <label for="name">Name:</label>
+              <input id="name" name="name" type="text" />
 
-            <label for="name">Name:</label>
-            <input id="name" name="name" type="text" />
+              <label for="address">Address:</label>
+              <input id="street" name="address" type="text" />
 
-            <label for="address">Address:</label>
-            <input id="street" name="address" type="text" />
+              <label for="city">City:</label>
+              <input id="city" name="city" type="text" />
 
-            <label for="city">City:</label>
-            <input id="city" name="city" type="text" />
+              <label for="state">State:</label>
+              <input id="state" name="state" type="text" />
 
-            <label for="state">State:</label>
-            <input id="state" name="state" type="text" />
+              <label for="zip">ZIP:</label>
+              <input id="zip" name="zip" type="text" />
 
-            <label for="zip">ZIP:</label>
-            <input id="zip" name="zip" type="text" />
+              <label for="phone">Phone Number:</label>
+              <input id="phone" name="phone" type="number" />
 
-            <label for="phone">Phone Number:</label>
-            <input id="phone" name="phone" type="number" />
-
-            <label for="credit">Credit Card:</label>
-            <input id="credit" name="credit" />
-
-            <button id="submit" type="submit">Add to Cart</button>
+              <label for="credit">Credit Card:</label>
+              <input id="credit" name="credit" />
+              <button id="addUser" type-"submit">Submit Order</button>
             </form>
-            </section>
-          </body>
-<script src="app.js"></script>
-<footer>
-</footer>
-</html>
+          </div>
+        </section>
+      </body>
+      <!-- <script src="app.js"></script> -->
+      <footer>
+      </footer>
+      </html>

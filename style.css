@@ -22,8 +22,12 @@ p {
   font-weight: 300;
 }
 
-table {
+table td tr {
   border: 1px solid red;
+}
+
+.form {
+  margin: 30px;
 }
 
 /*footer {
