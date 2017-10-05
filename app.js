@@ -21,7 +21,7 @@ var imageLibrary = [
   ['water-can', 'img/water-can.jpg'],
   ['wine-glass', 'img/wine-glass.jpg']
 ];
-var submitBtnEl = document.getElementById('submit');
+var submitBtnEl = document.getElementById('store-form');
 Product.allProducts = [];
 UserData.allUsers = [];
 
@@ -45,9 +45,10 @@ function UserData(name, street, city, state, zip, phone, credit) {
 
 function eventHandler(event) {
   event.preventDefault();
+  console.log('eventHandler called');
   //save cart item
   var item = event.target.id.value;
-  var qty = event.target.qty.value;
+  var qty = event.target.quantity.value;
   for (var i in Product.allProducts){
     if (item === Product.allProducts[i].name){
       Product.allProducts[i].inCart += qty;
@@ -75,7 +76,7 @@ function initialize() {
   for (var i in imageLibrary){
     new Product(imageLibrary[i][0], imageLibrary[i][1]);
   }
-  submitBtnEl.addEventListener('submit', eventHandler);
 }
-
+submitBtnEl.addEventListener('submit', eventHandler);
+console.log('event lister enabled');
 initialize();
