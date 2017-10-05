@@ -46,7 +46,7 @@ function UserData(name, street, city, state, zip, phone, credit) {
   UserData.allUsers.push(this);
 }
 
-function eventHandler(event) {
+function cartHandler(event) {
   event.preventDefault();
   console.log('eventHandler called');
   //save cart item
@@ -73,6 +73,10 @@ function eventHandler(event) {
   console.log(localStorage.allProducts);
   console.log(localStorage.allUsers);
   //clear form
+}
+
+function purchaseHandler(event) {
+  event.preventDefault();
 }
 
 function createCell(row, data){
