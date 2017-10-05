@@ -1,4 +1,7 @@
 'use strict';
+
+var elTable = document.getElementById('sales-table');
+
 var imageLibrary = [
   ['bag', 'img/bag.jpg'],
   ['banana', 'img/banana.jpg'],
@@ -72,11 +75,27 @@ function eventHandler(event) {
   //clear form
 }
 
+function createCell(row, data){
+  var newTdEl = document.createElement('td');
+  newTdEl.textContent = data;
+  row.appendChild(newTdEl);
+}
+
 function initialize() {
   for (var i in imageLibrary){
     new Product(imageLibrary[i][0], imageLibrary[i][1]);
   }
 }
-submitBtnEl.addEventListener('submit', eventHandler);
 console.log('event lister enabled');
 initialize();
+var newTrEl = document.createElement('tr');
+createCell(newTrEl, 'dummy data');
+createCell(newTrEl, 'dummy data');
+createCell(newTrEl, 'dummy data');
+elTable.appendChild(newTrEl);
+newTrEl = document.createElement('tr');
+createCell(newTrEl, 'dummy data');
+createCell(newTrEl, 'dummy data');
+createCell(newTrEl, 'dummy data');
+elTable.appendChild(newTrEl);
+submitBtnEl.addEventListener('submit', eventHandler);
