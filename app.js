@@ -1,7 +1,5 @@
 'use strict';
 
-var elTable = document.getElementById('sales-table');
-
 var imageLibrary = [
   ['bag', 'img/bag.jpg'],
   ['banana', 'img/banana.jpg'],
@@ -24,9 +22,21 @@ var imageLibrary = [
   ['water-can', 'img/water-can.jpg'],
   ['wine-glass', 'img/wine-glass.jpg']
 ];
-var submitBtnEl = document.getElementById('store-form');
+
+var elTable = document.getElementById('sales-table');
+var addCartBtnEl = document.getElementById('store-form');
+var userBtnEl = document.getElementById('user-form');
 Product.allProducts = [];
+Product.activeCart = [];
 UserData.allUsers = [];
+
+if (localStorage.getItem('activeCart') !== null) {
+  console.log('Data found');
+  Product.activeCart = JSON.parse(localStorage.getItem('activeCart'));
+} else {
+  console.log('Not found');
+  alert('Your cart is empty! Please select an item to purchase.');
+};
 
 function Product(name, filePath) {
   this.name = name;
@@ -59,6 +69,14 @@ function cartHandler(event) {
     }
   }
   //save user data
+  //save to local storage
+  localStorage.setItem('allProducts', JSON.stringify(Product.allProducts));
+  console.log(localStorage.allProducts);
+  //clear form
+}
+
+function purchaseHandler(event) {
+  event.preventDefault();
   var name = event.target.name.value;
   var street = event.target.street.value;
   var city = event.target.city.value;
@@ -67,16 +85,15 @@ function cartHandler(event) {
   var phone = event.target.phone.value;
   var credit = event.target.credit.value;
   new UserData(name, street, city, state, zip, phone, credit);
-  //save to local storage
-  localStorage.setItem('allProducts', JSON.stringify(Product.allProducts));
-  localStorage.setItem('allUsers', JSON.stringify(UserData.allUsers));
-  console.log(localStorage.allProducts);
   console.log(localStorage.allUsers);
-  //clear form
-}
+  for (var i in Product.allProducts){
+    if (Product.allProducts[i].inCart > 0){
+      Product.activeCart.push(Product.allProducts[i]);
+    }
+  }
+  localStorage.setItem('allUsers', JSON.stringify(UserData.allUsers));
+  localStorage.setItem('activeCart', JSON.stringify(Product.activeCart));
 
-function purchaseHandler(event) {
-  event.preventDefault();
 }
 
 function createCell(row, data){
@@ -102,4 +119,5 @@ createCell(newTrEl, 'dummy data');
 createCell(newTrEl, 'dummy data');
 createCell(newTrEl, 'dummy data');
 elTable.appendChild(newTrEl);
-submitBtnEl.addEventListener('submit', eventHandler);
+addCartBtnEl.addEventListener('submit', cartHandler);
+userBtnEl.addEventListener('submit', purchaseHandler);
