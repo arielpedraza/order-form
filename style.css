@@ -36,11 +36,40 @@ footer {
   margin-top: 150px;
 }
 
+hr {
+  color: lightgrey;
+  width: 55%;
+  border-top: 1px dotted #8c8b8b;
+}
+
+tabl {
+  margin-left: 20%;
+}
+
+table,th,td {
+  font-family: 'Helvetica', sans-serif;
+  text-align: center;
+  border-collapse: collapse;
+  margin-left: 30%;
+}
+
 table img {
   height: 150px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+th,td {
+  border-bottom: 1px solid rgb(234, 234, 234);
+  padding: 10px;
 }
 
 .form {
   margin: 30px;
   border: 0;
+  font-family: 'Saira', sans-serif;
+}
+
+.form input {
+  margin: 20px;
 }
