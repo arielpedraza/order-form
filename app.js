@@ -23,20 +23,13 @@ var imageLibrary = [
   ['wine-glass', 'img/wine-glass.jpg']
 ];
 
-var elTable = document.getElementById('sales-table');
 var addCartBtnEl = document.getElementById('store-form');
 var userBtnEl = document.getElementById('user-form');
 Product.allProducts = [];
 Product.activeCart = [];
 UserData.allUsers = [];
 
-if (localStorage.getItem('activeCart') !== null) {
-  console.log('Data found');
-  Product.activeCart = JSON.parse(localStorage.getItem('activeCart'));
-} else {
-  console.log('Not found');
-  alert('Your cart is empty! Please select an item to purchase.');
-};
+
 
 function Product(name, filePath) {
   this.name = name;
@@ -60,18 +53,21 @@ function cartHandler(event) {
   event.preventDefault();
   console.log('eventHandler called');
   //save cart item
-  var item = event.target.id.value;
-  var qty = event.target.quantity.value;
+  var item = document.getElementById('items');
+  console.log(item);
+  var qty = document.getElementById('quantity');
+  console.log(event.target);
   for (var i in Product.allProducts){
     if (item === Product.allProducts[i].name){
       Product.allProducts[i].inCart += qty;
+      console.log(Product.allProducts[i].inCart);
       break;
     }
   }
   //save user data
   //save to local storage
-  localStorage.setItem('allProducts', JSON.stringify(Product.allProducts));
-  console.log(localStorage.allProducts);
+  // localStorage.setItem('allProducts', JSON.stringify(Product.allProducts));
+  // console.log(localStorage.allProducts);
   //clear form
 }
 
@@ -85,22 +81,18 @@ function purchaseHandler(event) {
   var phone = event.target.phone.value;
   var credit = event.target.credit.value;
   new UserData(name, street, city, state, zip, phone, credit);
-  console.log(localStorage.allUsers);
   for (var i in Product.allProducts){
     if (Product.allProducts[i].inCart > 0){
       Product.activeCart.push(Product.allProducts[i]);
+      console.log(Product.activeCart);
     }
   }
   localStorage.setItem('allUsers', JSON.stringify(UserData.allUsers));
   localStorage.setItem('activeCart', JSON.stringify(Product.activeCart));
-
+  window.location.href = 'cart.html';
 }
 
-function createCell(row, data){
-  var newTdEl = document.createElement('td');
-  newTdEl.textContent = data;
-  row.appendChild(newTdEl);
-}
+
 
 function initialize() {
   for (var i in imageLibrary){
@@ -109,15 +101,6 @@ function initialize() {
 }
 console.log('event lister enabled');
 initialize();
-var newTrEl = document.createElement('tr');
-createCell(newTrEl, 'dummy data');
-createCell(newTrEl, 'dummy data');
-createCell(newTrEl, 'dummy data');
-elTable.appendChild(newTrEl);
-newTrEl = document.createElement('tr');
-createCell(newTrEl, 'dummy data');
-createCell(newTrEl, 'dummy data');
-createCell(newTrEl, 'dummy data');
-elTable.appendChild(newTrEl);
+
 addCartBtnEl.addEventListener('submit', cartHandler);
 userBtnEl.addEventListener('submit', purchaseHandler);
