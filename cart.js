@@ -1,6 +1,7 @@
 'use strict';
 
 var elTable = document.getElementById('sales-table');
+// var removeBtnEl = document.getElementById('remove-button');
 
 Product.allProducts = [];
 Product.activeCart = [];
@@ -43,6 +44,7 @@ function generateCart(){
   console.log(Product.activeCart);
   for (var i in Product.activeCart){
     var newTrEl = document.createElement('tr');
+    // newTrEl.setAttribute('id', Product.activeCart[i].name);
     createCell(newTrEl, Product.activeCart[i].name);
     var newTdEl = document.createElement('td');
     var newImgEl = document.createElement('img');
@@ -50,8 +52,34 @@ function generateCart(){
     newTdEl.appendChild(newImgEl);
     newTrEl.appendChild(newTdEl);
     createCell(newTrEl, Product.activeCart[i].inCart);
+    newTdEl = document.createElement('td');
+    var newBtnEl = document.createElement('button');
+    newBtnEl.setAttribute('type', 'click');
+    newBtnEl.setAttribute('name', Product.activeCart[i].name);
+    newBtnEl.textContent = 'Remove';
+    newTdEl.appendChild(newBtnEl);
+    newTrEl.appendChild(newTdEl);
     elTable.appendChild(newTrEl);
+    // var tempEl = document.getElementById(Product.activeCart[i].name);
+    // console.log(tempEl);
+    // tempEl.addEventListener('click', removeFromCart);
   }
 }
 
+function removeFromCart(event){
+  var temp = event.target.name.value;
+  console.log(temp);
+  for (var i in Product.activeCart){
+    if (Product.activeCart[i].name === temp){
+      Product.activeCart.splice(i, 1);
+      localStorage.setItem('activeCart', JSON.stringify(Product.activeCart));
+      break;
+    }
+  }
+  location.reload();
+}
+
 generateCart();
+
+// var removeBtnEl = document.getElementById('Luggage');
+// removeBtnEl.addEventListener('click', removeFromCart);
