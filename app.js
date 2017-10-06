@@ -55,7 +55,7 @@ function cartHandler(event) {
   //save cart item
   var item = event.target.items.value;
   console.log(item);
-  var qty = event.target.quantity.value;
+  var qty = parseInt(event.target.quantity.value);
   console.log(event.target);
   for (var i in Product.allProducts){
     if (item === Product.allProducts[i].name){
