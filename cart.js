@@ -1,7 +1,5 @@
 'use strict';
 
-
-
 var elTable = document.getElementById('sales-table');
 
 Product.allProducts = [];
@@ -14,7 +12,7 @@ if (localStorage.getItem('activeCart') !== null) {
 } else {
   console.log('Not found');
   alert('Your cart is empty! Please select an item to purchase.');
-};
+}
 
 function Product(name, filePath) {
   this.name = name;
@@ -34,8 +32,6 @@ function UserData(name, street, city, state, zip, phone, credit) {
   UserData.allUsers.push(this);
 }
 
-
-
 function createCell(row, data){
   var newTdEl = document.createElement('td');
   newTdEl.textContent = data;
@@ -43,15 +39,19 @@ function createCell(row, data){
 }
 
 function generateCart(){
-  var newTrEl = document.createElement('tr');
-  createCell(newTrEl, 'dummy data');
-  createCell(newTrEl, 'dummy data');
-  createCell(newTrEl, 'dummy data');
-  elTable.appendChild(newTrEl);
-  newTrEl = document.createElement('tr');
-  createCell(newTrEl, 'dummy data');
-  createCell(newTrEl, 'dummy data');
-  createCell(newTrEl, 'dummy data');
-  elTable.appendChild(newTrEl);
+  Product.activeCart = JSON.parse(localStorage.getItem('activeCart'));
+  console.log(Product.activeCart);
+  for (var i in Product.activeCart){
+    var newTrEl = document.createElement('tr');
+    createCell(newTrEl, Product.activeCart[i].name);
+    var newTdEl = document.createElement('td');
+    var newImgEl = document.createElement('img');
+    newImgEl.src = Product.activeCart[i].filePath;
+    newTdEl.appendChild(newImgEl);
+    newTrEl.appendChild(newTdEl);
+    createCell(newTrEl, Product.activeCart[i].inCart);
+    elTable.appendChild(newTrEl);
+  }
 }
+
 generateCart();
