@@ -12,7 +12,7 @@ body {
   padding: 0;
 }
 
-h1 {
+h1,h3 {
   font-family: 'Saira', sans-serif;
   font-weight: 700;
 }
@@ -59,9 +59,21 @@ table img {
   padding-right: 20px;
 }
 
-th,td {
+tr,td {
   border-bottom: 1px solid rgb(234, 234, 234);
   padding: 10px;
+  padding-top: 20px;
+}
+
+button {
+  color: white;
+  background-color: rgb(1, 175, 164);
+  font-family: 'Saira', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  border: 1px solid rgb(0, 140, 131);
+  padding: 10px 15px;
+  margin-left: 35px;
 }
 
 .form {
