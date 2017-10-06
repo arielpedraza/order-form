@@ -1,26 +1,26 @@
 'use strict';
 
 var imageLibrary = [
-  ['bag', 'img/bag.jpg'],
-  ['banana', 'img/banana.jpg'],
-  ['bathroom', 'img/bathroom.jpg'],
-  ['boots', 'img/boots.jpg'],
-  ['breakfast', 'img/breakfast.jpg'],
-  ['bubblegum', 'img/bubblegum.jpg'],
-  ['chair', 'img/chair.jpg'],
-  ['cthulhu', 'img/cthulhu.jpg'],
-  ['dog-duck', 'img/dog-duck.jpg'],
-  ['dragon', 'img/dragon.jpg'],
-  ['pen', 'img/pen.jpg'],
-  ['pet-sweep', 'img/pet-sweep.jpg'],
-  ['scissors', 'img/scissors.jpg'],
-  ['shark', 'img/shark.jpg'],
-  ['sweep', 'img/sweep.png'],
-  ['tauntaun', 'img/tauntaun.jpg'],
-  ['unicorn', 'img/unicorn.jpg'],
-  ['usb', 'img/usb.gif'],
-  ['water-can', 'img/water-can.jpg'],
-  ['wine-glass', 'img/wine-glass.jpg']
+  ['Luggage', 'img/bag.jpg'],
+  ['Banana Slicer', 'img/banana.jpg'],
+  ['Bathroom Buddy', 'img/bathroom.jpg'],
+  ['Fashion Wellies', 'img/boots.jpg'],
+  ['Breakfast Machine', 'img/breakfast.jpg'],
+  ['Meatball Bubblegum', 'img/bubblegum.jpg'],
+  ['Chair', 'img/chair.jpg'],
+  ['Cthulhu', 'img/cthulhu.jpg'],
+  ['Duck Muzzle', 'img/dog-duck.jpg'],
+  ['Dragon Meat', 'img/dragon.jpg'],
+  ['Practical Cutlery', 'img/pen.jpg'],
+  ['Pet Broom', 'img/pet-sweep.jpg'],
+  ['Pizza Scissors', 'img/scissors.jpg'],
+  ['Shark Blanket', 'img/shark.jpg'],
+  ['Baby Broom', 'img/sweep.png'],
+  ['Tauntaun', 'img/tauntaun.jpg'],
+  ['Unicorn Meat', 'img/unicorn.jpg'],
+  ['Tentacle USB', 'img/usb.gif'],
+  ['Watering Can', 'img/water-can.jpg'],
+  ['Wine Glass', 'img/wine-glass.jpg']
 ];
 
 var addCartBtnEl = document.getElementById('store-form');
@@ -53,9 +53,9 @@ function cartHandler(event) {
   event.preventDefault();
   console.log('eventHandler called');
   //save cart item
-  var item = document.getElementById('items');
+  var item = event.target.items.value;
   console.log(item);
-  var qty = document.getElementById('quantity');
+  var qty = event.target.quantity.value;
   console.log(event.target);
   for (var i in Product.allProducts){
     if (item === Product.allProducts[i].name){
