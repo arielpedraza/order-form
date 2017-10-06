@@ -17,7 +17,7 @@
       <form id="store-form">
         <fieldset>
           <legend>Select your Product</legend>
-          <select>
+          <select id="items">
             <option id="start">Select a Product</option>
             <option id="luggage">Luggage</option>
             <option id="bananaSlicer">Banana Slicer</option>
@@ -41,7 +41,7 @@
             <option id="wineGlass">Wine Glass</option>
           </select>
           <label for="quantity">Quantity:</label>
-          <input name="quantity" type="number" />
+          <input id="quantity" name="quantity" type="number" />
           <button id="addCart" type="submit">Add to Cart</button>
         </form>
       </div>
@@ -70,11 +70,12 @@
               <label for="credit">Credit Card:</label>
               <input id="credit" name="credit" />
               <button id="addUser" type="submit">Submit Order</button>
+            </fieldset>
             </form>
           </div>
         </section>
       </body>
-      <!-- <script src="app.js"></script> -->
+      <script src="app.js"></script>
       <footer>
       </footer>
       </html>
