@@ -26,12 +26,21 @@ table td tr {
   border: 1px solid red;
 }
 
-.form {
-  margin: 30px;
+fieldset {
+  border: 0;
 }
 
-/*footer {
+footer {
   height: 200px;
   background-image: url('img/monobackground.jpg');
   margin-top: 150px;
-}*/
+}
+
+table img {
+  height: 150px;
+}
+
+.form {
+  margin: 30px;
+  border: 0;
+}
